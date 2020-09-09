@@ -1,24 +1,115 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column                 | Type   | Options     |
+| -----------------------| ------ | ----------- |
+| nickname               | string | null: false |
+| email                  | string | null: false |
+| password               | string | null: false |
+| password_confirmation  | string | null: false |
+| family_name            | string | null: false |
+| first_name             | string | null: false |
+| family_name_kana       | string | null: false |
+| first_name_kana        | string | null: false |
+| birthday               | date   | null: false |
 
-Things you may want to cover:
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :selected_users
+- has_many :matchings
+- has_many :comments
+- has_many :users_rooms
+- has_many :rooms, through: :users_rooms
 
-* Configuration
 
-* Database creation
+## selected_users テーブル
 
-* Database initialization
+| Column          | Type      | Options                        |
+| --------------- | --------- | ------------------------------ |
+| user            | references| null: false, foreign_key: true |
+| logic_result    | references| null: false, foreign_key: true |
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
 
-* Deployment instructions
+- belongs_to :user
+- has_one_attached :image
+- has_one :matching
+- has_one :profile
 
-* ...
+
+## matchings テーブル
+
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| user         | references | null: false, foreign_key: true |
+| selected_user| references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :selected_user
+- belongs_to :user
+- has_one :room
+
+
+## rooms テーブル
+
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| matching     | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :matching
+- has_many :users_rooms
+- has_many :users, through: :users_rooms
+
+
+###commentsテーブル
+
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| comments     | text       | null: false,                   |
+| user         | references | null: false, foreign_key: true |
+| selected_user| references | null: false, foreign_key: true |
+
+
+###Association
+
+- belongs_to :room
+- belongs_to :user
+
+
+###users_roomsテーブル
+
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| user         | references | null: false, foreign_key: true |
+| selected_user| references | null: false, foreign_key: true |
+
+
+###Association
+
+- belongs_to :user
+- belongs_to :room
+
+
+###profileテーブル
+
+| Column          | Type      | Options                        |
+| --------------- | --------- | ------------------------------ |
+| user            | references| null: false, foreign_key: true |
+| logic_result    | references| null: false, foreign_key: true |
+| profile         | text      | null: false                    |
+| pr              | text      | null: false                    |
+| hobby           | text      | null: false                    |
+| work            | text      | null: false                    |
+
+
+### Association
+
+- belongs_to :user
+- has_one_attached :image
+- belongs_to :selected_user
