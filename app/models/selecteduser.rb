@@ -1,0 +1,2 @@
+class Selecteduser < ApplicationRecord
+end
