@@ -22,7 +22,7 @@
 - has_many :rooms, through: :users_rooms
 
 
-## selectedusers テーブル
+## selectedusers テーブル 
 
 | Column          | Type      | Options                        |
 | --------------- | --------- | ------------------------------ |
