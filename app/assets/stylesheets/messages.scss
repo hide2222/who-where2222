@@ -71,9 +71,7 @@ height: 100vh;
   padding: 36px 40px;
 }
 
-.chat-end{
-  
-}
+
 .chat-end a{
   border: 1px solid darkred;
   color: darkred;
@@ -97,16 +95,67 @@ height: 100vh;
   height:calc(100vh - 100px - 90px);
   background-color: #FAFAFA;
   padding: 46px 40px 0 40px;
+  overflow:scroll;
+}
+
+.message {
+  margin: 10px 0;
+}
+
+.upper-message{
+  display: flex;
+}
+
+.message-user {
+  color: #434a54;
+  font-size: 16px;
+}
+
+.message-date {
+  color: #999;
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+.lower-message {
+  margin-top: 10px;
+}
+
+.message-content {
+  color: #434a54;
+  font-size: 14px;
+  margin-bottom: 40px;
 }
 
 .form{
   background-color: #DDDDDD;
   height:90px;
   padding: 20px 40px;
+  display: flex;
 }
 
+.form-input{
+  background-color:white;
+  width: 100%;
+}
 
+.form-message{
+  border: none;
+  height: 50px;
+  height: 50px;
+  width:  100%;
+  padding-left: 10px;
+}
 
+.form-submit{
+  background-color: #38AEF0;
+  border: none;
+  color: white;
+  font-size: 16px;
+  height: 50px;
+  margin-left: 15px;
+  padding: 0 20px;
+}
 
 *{
   box-sizing: border-box;
