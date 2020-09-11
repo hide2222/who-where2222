@@ -1,10 +1,13 @@
-<header class='second-header'>
-  <%= link_to image_tag("furima-logo-color.png", class:"second-logo"), "/" %>
-</header>
+<%= render "shared/second-header"%>
+
 
 <div class="wrapper">
-<%= render "side_bar" %>
-<%= render "main_chat" %>
+  <div class="side-bar">
+    <%= render "side_bar" %>
+  </div>
+  <div class="chat">
+    <%= render "main_chat" %>
+  </div>
 </div>
 
 <%= render "shared/second-footer"%>
