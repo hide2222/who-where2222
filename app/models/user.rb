@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :rooms, through: :users_rooms
 
   with_options presence:true do
-    validates :nicknme
+    validates :nickname
     validates :birthday
     validates :email, format:{ with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
     validates :password, length:{minimum: 6},format: { with:  /\A(?=.*?[a-z])[a-z\d]{6,32}+\z/}
