@@ -17,9 +17,8 @@
 
 - has_many :selected_users
 - has_many :matchings
-- has_many :comments
-- has_many :users_rooms
-- has_many :rooms, through: :users_rooms
+- has_many :messages
+- has_many :rooms
 
 
 ## selectedusers テーブル 
@@ -58,20 +57,22 @@
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | matching     | references | null: false, foreign_key: true |
-
+| user         | references | null: false, foreign_key: true |
+|selected_user | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :matching
-- has_many :users_rooms
-- has_many :users, through: :users_rooms
+- belongs_to :user
+- belongs_to :selected_user
+- has_many :messages
 
 
-###commentsテーブル
+###messagesテーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| comments     | text       | null: false,                   |
+| message      | text       | null: false,                   |
 | user         | references | null: false, foreign_key: true |
 | selected_user| references | null: false, foreign_key: true |
 
@@ -80,20 +81,8 @@
 
 - belongs_to :room
 - belongs_to :user
+- belongs_to :selected_user
 
-
-###users_roomsテーブル
-
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| user         | references | null: false, foreign_key: true |
-| selected_user| references | null: false, foreign_key: true |
-
-
-###Association
-
-- belongs_to :user
-- belongs_to :room
 
 
 ###profileテーブル
