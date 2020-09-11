@@ -3,9 +3,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :selected_users
   has_many :matchings
-  has_many :comments
-  has_many :users_rooms
-  has_many :rooms, through: :users_rooms
+  has_many :messages
+  has_many :rooms
 
   with_options presence:true do
     validates :nickname
