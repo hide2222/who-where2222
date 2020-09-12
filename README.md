@@ -58,7 +58,7 @@
 | ------------ | ---------- | ------------------------------ |
 | matching     | references | null: false, foreign_key: true |
 | user         | references | null: false, foreign_key: true |
-|selected_user | references | null: false, foreign_key: true |
+| selected_user| references | null: false, foreign_key: true |
 
 ### Association
 
@@ -68,7 +68,7 @@
 - has_many :messages
 
 
-###messagesテーブル
+##messagesテーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
@@ -85,7 +85,7 @@
 
 
 
-###profileテーブル
+##profileテーブル
 
 | Column          | Type      | Options                        |
 | --------------- | --------- | ------------------------------ |
