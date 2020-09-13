@@ -42,7 +42,7 @@
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | user         | references | null: false, foreign_key: true |
-| selected_user| references | null: false, foreign_key: true |
+| selecteduser| references | null: false, foreign_key: true |
 
 
 ### Association
@@ -54,11 +54,11 @@
 
 ## rooms テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| matching     | references | null: false, foreign_key: true |
-| user         | references | null: false, foreign_key: true |
-| selected_user| references | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| matching       | references | null: false, foreign_key: true |
+| user           | references | null: false, foreign_key: true |
+| selecteduser_id| references | null: false, foreign_key: true |
 
 ### Association
 
