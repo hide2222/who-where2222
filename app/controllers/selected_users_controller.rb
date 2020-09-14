@@ -1,16 +1,16 @@
 class SelectedUsersController < ApplicationController
  
   def new
-    @selected_user = Selecteduser.new
+    @selecteduser = Selecteduser.new
   end
 
   def index
-    @selected_users = Selecteduser.all
+    @selectedusers = Selecteduser.all
   end
 
   def create
-    @selected_user = Selecteduser.new(serected_user_params)
-    if @selected_user.save
+    @selecteduser = Selecteduser.new(serected_user_params)
+    if @selecteduser.save
     redirect_to root_path
     else
     render :index
@@ -20,7 +20,7 @@ class SelectedUsersController < ApplicationController
 
   private
 
-  def serected_user_params
+  def serecteduser_params
     params.require(:selecteduser).merge(user_id:current_user.id,logic_result_id:logic_result_id)
   end
 end
