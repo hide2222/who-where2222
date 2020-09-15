@@ -13,11 +13,18 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:matching_id])
+    @room = Room.find(params[:room_id])
 
   private
 
   def room_params
    params.require(:room).permit(:matching_id:).merge(user_id:current_user.id, selecteduser_id:selecteduser.id)
+  end
+  
+  def set_selecteduser
+    @selecteduser = Selecteduser.find(params[:selecteduser_id])
+  end
+  def set_matching
+    @matching = Matching.find[params[:matching_id]]
   end
 end
