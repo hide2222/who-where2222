@@ -35,6 +35,7 @@
 - has_one_attached :image
 - has_one :matching
 - has_one :profile
+- has_one :logic1
 
 
 ## matchings テーブル
@@ -58,7 +59,7 @@
 | -------------- | ---------- | ------------------------------ |
 | matching       | references | null: false, foreign_key: true |
 | user           | references | null: false, foreign_key: true |
-| selecteduser_id| references | null: false, foreign_key: true |
+| selecteduser| references | null: false, foreign_key: true |
 
 ### Association
 
@@ -101,4 +102,15 @@
 
 - belongs_to :user
 - has_one_attached :image
-- belongs_to :selected_user
+- belongs_to :selecteduser
+
+
+## logic1 テーブル
+
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| logic_result   | integer    | null: false,                   |
+
+### Association
+
+- belongs_to :selecteduser

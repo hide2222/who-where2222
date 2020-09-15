@@ -9,7 +9,7 @@ class SelectedUsersController < ApplicationController
   end
 
   def create
-    @selecteduser = Selecteduser.new(serected_user_params)
+    @selecteduser = Selecteduser.new(serecteduser_params)
     if @selecteduser.save
     redirect_to root_path
     else
@@ -21,6 +21,6 @@ class SelectedUsersController < ApplicationController
   private
 
   def serecteduser_params
-    params.require(:selecteduser).merge(user_id:current_user.id,logic_result_id:logic_result_id)
+    params.require(:selecteduser).permit(:logic_result_id).merge(user_id:current_user.id)
   end
 end
