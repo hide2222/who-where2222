@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_091203) do
+ActiveRecord::Schema.define(version: 2020_09_14_062128) do
 
   create_table "matchings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 2020_09_13_091203) do
     t.index ["selecteduser_id"], name: "index_matchings_on_selecteduser_id"
     t.index ["selecteduser_id_id"], name: "index_matchings_on_selecteduser_id_id"
     t.index ["user_id"], name: "fk_rails_60b3575cfe"
+  end
+
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "message"
+    t.bigint "user_id", null: false
+    t.bigint "selecteduser_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["selecteduser_id"], name: "index_messages_on_selecteduser_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -63,6 +75,8 @@ ActiveRecord::Schema.define(version: 2020_09_13_091203) do
 
   add_foreign_key "matchings", "selectedusers"
   add_foreign_key "matchings", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "rooms", "matchings"
   add_foreign_key "rooms", "selectedusers"
   add_foreign_key "rooms", "users"

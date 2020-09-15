@@ -4,8 +4,8 @@
 
   </header>
   <div class="items-sell-main">
-    <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model:@selected_user, local: true do |f| %>
+    <h2 class="items-sell-title">自分分析をやってみる</h2>
+    <%= form_with model:@selecteduser, url:selected_users_path, local: true do |f| %>
 
     
     <%= render 'shared/error_messages', model: f.object %>
@@ -14,7 +14,7 @@
     <%# 出品画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
-        出品画像
+        自分の画像
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
@@ -28,10 +28,10 @@
     <%# 商品名と商品説明 %>
     <div class="new-items">
       <div class="weight-bold-text">
-        商品名
+        ユーザ名
         <span class="indispensable">必須</span>
       </div>
-      <%#= f.text_area :hoge, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <%#= f.text_area :@user.name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
       <div class="items-explain">
         <div class="weight-bold-text">
           商品の説明
