@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :rooms
   has_one :profile
+  has_one :logic1
 
   with_options presence:true do
     validates :nickname

@@ -19,6 +19,8 @@
 - has_many :matchings
 - has_many :messages
 - has_many :rooms
+- has_one  :logic1
+= has_one  :profile
 
 
 ## selectedusers テーブル 
@@ -34,8 +36,7 @@
 - belongs_to :user
 - has_one_attached :image
 - has_one :matching
-- has_one :profile
-- has_one :logic1
+- has_one :logic_result_id
 
 
 ## matchings テーブル
@@ -59,34 +60,30 @@
 | -------------- | ---------- | ------------------------------ |
 | matching       | references | null: false, foreign_key: true |
 | user           | references | null: false, foreign_key: true |
-| selecteduser| references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :matching
 - belongs_to :user
-- belongs_to :selected_user
 - has_many :messages
 
 
-##messagesテーブル
+## messagesテーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | message      | text       | null: false,                   |
 | user         | references | null: false, foreign_key: true |
-| selecteduser | references | null: false, foreign_key: true |
 | room         | references | null: false, foreign_key: true |
 
 ###Association
 
 - belongs_to :room
 - belongs_to :user
-- belongs_to :selecteduser
 
 
 
-##profileテーブル
+## profileテーブル
 
 | Column          | Type      | Options                        |
 | --------------- | --------- | ------------------------------ |
@@ -102,7 +99,6 @@
 
 - belongs_to :user
 - has_one_attached :image
-- belongs_to :selecteduser
 
 
 ## logic1 テーブル
@@ -110,7 +106,9 @@
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | logic_result   | integer    | null: false,                   |
+| user_id           | references | null: false, foreign_key: true |
 
 ### Association
 
+- belongs_to :user
 - belongs_to :selecteduser

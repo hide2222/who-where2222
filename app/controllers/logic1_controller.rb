@@ -8,7 +8,7 @@ class Logic1Controller < ApplicationController
   def create
     @logic1 = Logic1.new(logic1_params)
     if @logic1.save
-      redirect_to root_path
+      redirect_to new_selected_user_path
     else
       render:new
     end
@@ -16,6 +16,6 @@ class Logic1Controller < ApplicationController
 
   private
   def logic1_params
-  params.require(:logic1).permit(:logic_result_id).merge(selecteduser_id:current_user.id)
+  params.require(:logic1).permit(:logic_result_id).merge(user_id:current_user.id)
   end
 end
