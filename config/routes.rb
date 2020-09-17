@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #root to: 'selected_users#index'
   #resources :selected_users
   root to: 'selected_users#index'
+  resources :logic1, only:[:new, :create]
   resources :selected_users do
     resources :matchings
   end

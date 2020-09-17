@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_062128) do
+ActiveRecord::Schema.define(version: 2020_09_16_063058) do
+
+  create_table "logic1s", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "logic_result_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "fk_rails_695f2ba34c"
+  end
 
   create_table "matchings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -51,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_062128) do
     t.bigint "logic_result_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "gender_id"
     t.index ["logic_result_id"], name: "index_selectedusers_on_logic_result_id"
     t.index ["user_id"], name: "index_selectedusers_on_user_id"
   end
@@ -73,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_062128) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "logic1s", "users"
   add_foreign_key "matchings", "selectedusers"
   add_foreign_key "matchings", "users"
   add_foreign_key "messages", "rooms"
@@ -80,4 +90,5 @@ ActiveRecord::Schema.define(version: 2020_09_14_062128) do
   add_foreign_key "rooms", "matchings"
   add_foreign_key "rooms", "selectedusers"
   add_foreign_key "rooms", "users"
+  add_foreign_key "selectedusers", "users"
 end
