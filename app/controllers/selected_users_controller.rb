@@ -25,7 +25,7 @@ class SelectedUsersController < ApplicationController
 
   def serecteduser_params
     gender_id = params[:selecteduser][:gender_id]
-    params.require(:selecteduser).permit(:gender_id).merge(user_id:current_user.id,logic_result_id:@logic1.logic_result_id)
+    params.require(:selecteduser).permit(:gender_id, :image).merge(user_id:current_user.id,logic_result_id:@logic1.logic_result_id)
     
   end
 
