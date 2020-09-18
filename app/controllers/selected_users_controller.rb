@@ -1,14 +1,14 @@
 class SelectedUsersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create,]
   before_action :set_user, only: [:new, :create]
-  before_action :set_logic1
+  before_action :set_logic1, only: [:new, :create]
   def new
     @selecteduser = Selecteduser.new
     @logic1 = Logic1.new
   end
 
   def index
-    @selectedusers = Selecteduser.all
+    @selectedusers = Selecteduser.order("created_at DESC")
   end
 
   def create

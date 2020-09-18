@@ -126,26 +126,26 @@
     <%= link_to '待っているお友達', "#", class: "subtitle" %>
     <ul class='item-lists'>
       
-      <% if @selected_users.present? %>
+      <% if @selectedusers.present? %>
       <% @selectedusers.each do |selecteduser| %>
       <li class='list'>
         <%= link_to "#" do %>
         <div class='item-img-content'>
-          <%= image_tag "item-sample.png", class: "item-img" %>
+          <%= image_tag selecteduser.image, class: "item-img" if selecteduser.image.attached? %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <div class='sold-out'>
-            <span>Sold Out!!</span>
+            <span>Match Alredy!!</span>
           </div>
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
-            <%= "商品名" %>
+            <%= selecteduser.user.nickname %>
           </h3>
           <div class='item-price'>
-            <span><%= "販売価格" %>円<br>(税込み)</span>
+            <span><%#= selecteduser.gender_id %><br></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -181,10 +181,12 @@
   </div>
   <%# /商品一覧 %>
 </div>
+<% if user_signed_in?%>
 <div class='purchase-btn'>
   <span class='purchase-btn-text'>分析する</span>
   <a href=" /logic1/new">
     <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
   </a>
 </div>
+<% end %>
 <%= render "shared/footer" %>

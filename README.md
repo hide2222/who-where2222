@@ -87,7 +87,7 @@
 
 | Column          | Type      | Options                        |
 | --------------- | --------- | ------------------------------ |
-| user            | references| null: false, foreign_key: true |
+| user_id          | references| null: false, foreign_key: true |
 | logic_result    | references| null: false, foreign_key: true |
 | profile         | text      | null: false                    |
 | pr              | text      | null: false                    |
